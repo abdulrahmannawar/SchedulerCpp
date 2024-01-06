@@ -51,7 +51,8 @@ void Scheduler::yield()
         Fiber *new_fiber = fibers.back();
         fibers.pop_back();
         fibers.push_front(active_fiber);
+        Fiber *old_fiber = active_fiber;
         active_fiber = new_fiber;
-        swap_context(fibers.back()->get_context(), active_fiber->get_context());
+        swap_context(old_fiber->get_context(), active_fiber->get_context());
     }
 }

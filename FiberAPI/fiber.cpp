@@ -1,5 +1,5 @@
-#include "../../include/Task3/fiber.hpp"
-#include "../../context/context.hpp"
+#include "../include/Task3/fiber.hpp"
+#include "../context/context.hpp"
 #include <cstdint>
 
 Fiber::Fiber(void (*func)(), void *dp)
