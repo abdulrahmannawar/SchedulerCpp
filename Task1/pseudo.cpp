@@ -1,6 +1,6 @@
 #include "../context/context.hpp"
 #include <iostream>
-
+ 
 int main() {
     volatile int x = 0;
     Context* c;

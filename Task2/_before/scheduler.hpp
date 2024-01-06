@@ -2,13 +2,12 @@
 
 #include <deque>
 #include "fiber.hpp"
-#include "../context/context.hpp"
+#include "../../context/context.hpp"
 
 class Scheduler {
 public:
     Scheduler() {
         context = new Context;
-        get_context(context);
     }
     ~Scheduler() {
         delete context;
