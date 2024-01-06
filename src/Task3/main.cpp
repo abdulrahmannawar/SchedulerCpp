@@ -1,6 +1,6 @@
 #include <iostream>
-#include "fiber.hpp"
-#include "scheduler.hpp"
+#include "../../include/Task3/fiber.hpp"
+#include "../../include/Task3/scheduler.hpp"
 
 Scheduler scheduler;
 

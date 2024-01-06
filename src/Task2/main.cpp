@@ -1,13 +1,13 @@
 #include "../../context/context.hpp"
-#include "fiber.hpp"
-#include "scheduler.hpp"
+#include "../../include/Task2/fiber.hpp"
+#include "../../include/Task2/scheduler.hpp"
 #include <iostream>
 
 void func1();
 void func2();
 
 int* Fiber::dp;
-Scheduler s(Fiber::dp);
+Scheduler s;
 
 int main() {
     int d = 10;
