@@ -25,11 +25,11 @@ The project is structured as follows:
 * **`include/`** - Contains the header files for the Task2 and 3.
   * **`fiber.hpp`** - Contains the definition of the fiber class.
   * **`scheduler.hpp`** - Contains the definition of the scheduler class.
-* **`context`** - Contains the context switching implementation in ASM and its relevant **.hpp** file.
-* **`build`** - Contains the executables for the project.
-* **`FiberAPI`** - Contains the implementation of the fiber API.
-* **`obj`** - Contains the object file for the project (**context.o**).
-* **`simpletest`** - Contains the implementation of the simpletest unit test framework.
+* **`context/`** - Contains the context switching implementation in ASM and its relevant **.hpp** file.
+* **`build/`** - Contains the executables for the project.
+* **`FiberAPI/`** - Contains the implementation of the fiber API.
+* **`obj/`** - Contains the object file for the project (**context.o**).
+* **`simpletest/`** - Contains the implementation of the simpletest unit test framework.
 * **`Makefile`** - Contains the script for compiling the project.
 
 ## Dependencies
@@ -55,8 +55,8 @@ The executables include:
 * **Task 1 Main Code:** `task1`
 * **Task 2 Main Code:** `task2`
 * **Task 3 Main Code:** `task3`
-* **Task 3 Main Code (API):** `task3_api`
-* **Tests:** `tests`
+* **Task 3 Main Code (API Version):** `task3_api`
+* **Unit Tests:** `tests`
 
 Example:
 
@@ -288,6 +288,10 @@ The unit tests were implemented using the [`simpletest`](https://github.com/kuda
 
 The tests included are:
 * **`TestSpawnWithoutExecution`:** Tests what happens when the scheduler spawns a fiber without executing it.
-* **`TestSpawnWithExecution`:** 
+* **`TestSpawnWithExecution`:** Tests what happens when the scheduler spawns a fiber and executes it.
+* **`TestYield`:** Tests what happens when the scheduler yields the execution of a fiber.
+* **`TestQueueClearedAfterExecution`:** Tests what happens when the scheduler clears the queue after executing a fiber.
+* **`TestConcurrency`:** Tests what happens when the scheduler executes multiple fibers concurrently.
+* **`TestNestedFiber`:**  Tests what happens when the scheduler executes a fiber that spawns another fiber.
 
 # [Back To Top](#contents)
