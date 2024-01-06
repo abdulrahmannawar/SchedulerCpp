@@ -2,6 +2,7 @@
 #include "../../include/Task2/fiber.hpp"
 #include <iostream>
 
+
 Fiber::Fiber(void (*func)(void), int *dp)
 {
     this->dp = dp;
