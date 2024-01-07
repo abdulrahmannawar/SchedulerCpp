@@ -32,9 +32,16 @@ TEST_EXE := $(BUILD_DIR)/tests
 
 COMMON_OBJ := $(OBJ_DIR)/context.o
 
-.PHONY: all clean run task1 task2 task3 task1_pseudo tests task3_api
+.PHONY: all clean run task1 task2 task3 task1_pseudo task3_api tests
 
-all: $(TASK1_EXE) $(TASK2_EXE) $(TASK3_EXE) $(TASK1_PSEUDO_EXE) $(TEST_EXE) $(TASK3_API_EXE)
+
+all: update_submodules $(OBJ_DIR) $(BUILD_DIR) $(TASK1_EXE) $(TASK2_EXE) $(TASK3_EXE) $(TASK1_PSEUDO_EXE) $(TASK3_API_EXE) $(TEST_EXE)
+
+$(OBJ_DIR):
+	@mkdir -p $@
+
+$(BUILD_DIR):
+	@mkdir -p $@
 
 $(BUILD_DIR)/task1: $(TASK1_SRC) $(COMMON_OBJ)
 	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) $^ -o $@
@@ -48,11 +55,11 @@ $(BUILD_DIR)/task2: $(TASK2_SRC) $(COMMON_OBJ)
 $(BUILD_DIR)/task3: $(TASK3_SRC) $(COMMON_OBJ)
 	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) $^ -o $@
 
-$(BUILD_DIR)/tests: $(TEST_SRC) $(COMMON_OBJ)
-	$(CXX) $(CXXFLAGS) $(FIBER_API_SRC) $(SIMPLETEST_SRC) -I$(INCLUDE_DIR) $^ -o $@
-
 $(BUILD_DIR)/task3_api: $(TASK3_API_SRC) $(COMMON_OBJ)
 	$(CXX) $(CXXFLAGS) $(FIBER_API_SRC) -I$(INCLUDE_DIR) $^ -o $@
+
+$(BUILD_DIR)/tests: $(TEST_SRC) $(COMMON_OBJ) $(FIBER_API_SRC) $(SIMPLETEST_SRC)
+	$(CXX) $(CXXFLAGS)  -I$(INCLUDE_DIR) $^ -o $@
 
 $(OBJ_DIR)/context.o: context/context.s
 	$(CXX) $(ASFLAGS) -c $< -o $@
@@ -65,3 +72,7 @@ run:
 
 task1 task2 task3 task1_pseudo tests task3_api:
 	@:
+
+update_submodules:
+	@git submodule init
+	@git submodule update
