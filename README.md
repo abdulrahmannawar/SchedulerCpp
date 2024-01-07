@@ -44,7 +44,11 @@ To compile the files, run the following (in the root directory of the worksheet)
 make
 ~~~
 
-This will compile the files and generate the executable for each task accordingly, as well as the context object file that is used by all the files. To run a specific executable, use the following command:
+This will compile the files and generate the executable for each task accordingly, as well as the context object file that is used by all the files.
+
+*NOTE: IF THE FIRST RUN OF MAKE GIVES A LINKER ERROR, RUN IT AGAIN.*
+
+ To run a specific executable, use the following command:
 
 ~~~bash
 make run <executable_name>
